@@ -1,0 +1,239 @@
+{
+  "intents": [
+    {
+      "tag": "saudacao",
+      "patterns": [
+        "oi",
+        "olá",
+        "boa tarde",
+        "bom dia",
+        "boa noite",
+        "ei",
+        "hello",
+        "hi",
+        "como vai",
+        "tudo bem",
+        "oi tudo bem",
+        "e ai",
+        "ola como vai",
+        "bom diaa",
+        "boa tardee"
+      ],
+      "responses": [
+        "Olá! Bem-vindo à Pizzaria do Matheus! 🍕 Como posso ajudá-lo hoje?",
+        "Oi! Que bom ter você aqui! Em que posso ajudar?",
+        "Boa tarde! Pronto para uma pizza deliciosa?",
+        "Olá! Nosso menu está fresquinho, o que vai querer hoje?"
+      ]
+    },
+    {
+      "tag": "despedida",
+      "patterns": [
+        "tchau",
+        "até logo",
+        "bye",
+        "adeus",
+        "falou",
+        "nos vemos",
+        "até mais",
+        "obrigado tchau",
+        "muito obrigado tchau",
+        "ta bom tchau",
+        "beleza tchau",
+        "ok até logo",
+        "valeu tchau",
+        "ate mais ver",
+        "ate mais tarde",
+        "valeu"
+      ],
+      "responses": [
+        "Até logo! Obrigado por escolher a Pizzaria do Matheus! 🍕",
+        "Tchau! Esperamos você em breve para mais pizzas deliciosas!",
+        "Até mais! Que sua pizza seja sempre saborosa! 🍕",
+        "Adeus! Volte sempre à nossa pizzaria!"
+      ]
+    },
+    {
+      "tag": "cardapio",
+      "patterns": [
+        "qual o cardápio",
+        "que pizzas vocês têm",
+        "quais os sabores",
+        "menu",
+        "cardapio",
+        "o que vocês vendem",
+        "que tipos de pizza",
+        "sabores disponíveis",
+        "lista de pizzas",
+        "quero ver o menu",
+        "que pizza tem",
+        "mostrar cardapio",
+        "ver sabores",
+        "quais sabores tem",
+        "cardapoi completo",
+        "pizza",
+        "quero pizza"
+      ],
+      "responses": [
+        "🍕 Nosso cardápio: Margherita (R$35), Pepperoni (R$40), Portuguesa (R$42), 4 Queijos (R$38), Calabresa (R$36), Frango c/ Catupiry (R$39), Vegetariana (R$37), Napolitana (R$41).",
+        "Temos pizzas deliciosas! Margherita, Pepperoni, Portuguesa, 4 Queijos, Calabresa, Frango com Catupiry, Vegetariana e Napolitana. Preços de R$35 a R$42!",
+        "Nossos sabores: Margherita R$35, Pepperoni R$40, Portuguesa R$42, 4 Queijos R$38, Calabresa R$36, Frango c/ Catupiry R$39, Vegetariana R$37, Napolitana R$41 🍕",
+        "Cardápio completo: 8 sabores incríveis de R$35 a R$42! Margherita, Pepperoni, Portuguesa, 4 Queijos, Calabresa, Frango c/ Catupiry, Vegetariana e Napolitana."
+      ]
+    },
+    {
+      "tag": "preco",
+      "patterns": [
+        "quanto custa",
+        "qual o preço",
+        "preço da pizza",
+        "valor",
+        "precos",
+        "quanto é",
+        "custoo",
+        "preço da margherita",
+        "preço da pepperoni",
+        "quanto custa uma pizza",
+        "valores das pizzas",
+        "preço pizzas",
+        "custto da calabresa",
+        "preco 4 queijos",
+        "valor frango catupiry"
+      ],
+      "responses": [
+        "Nossos preços: Margherita R$35, Pepperoni R$40, Portuguesa R$42, 4 Queijos R$38, Calabresa R$36, Frango c/ Catupiry R$39, Vegetariana R$37, Napolitana R$41.",
+        "Pizzas de R$35 a R$42! Qual sabor te interessa? Posso te dar o preço específico! 💰",
+        "Preços justos e pizzas deliciosas! De R$35 (Margherita) até R$42 (Portuguesa). Qual você gostaria?",
+        "Valores: Calabresa R$36, Margherita R$35, Vegetariana R$37, 4 Queijos R$38, Frango c/ Catupiry R$39, Pepperoni R$40, Napolitana R$41, Portuguesa R$42."
+      ]
+    },
+    {
+      "tag": "pedido",
+      "patterns": [
+        "quero uma pizza",
+        "gostaria de pedir",
+        "vou querer",
+        "pode anotar",
+        "quero fazer um pedido",
+        "gostaria de uma pizza",
+        "vou pedir uma",
+        "quero comprar",
+        "fazer pedido",
+        "anotar pedido",
+        "gostaria calabresa",
+        "quero margherita",
+        "vou querer pepperoni",
+        "pode ser portuguesa",
+        "pedri uma pizza"
+      ],
+      "responses": [
+        "Perfeito! Qual sabor você gostaria? Temos Margherita, Pepperoni, Portuguesa, 4 Queijos, Calabresa, Frango c/ Catupiry, Vegetariana e Napolitana! 🍕",
+        "Ótima escolha! Me diga qual sabor você prefere e eu anoto seu pedido!",
+        "Que delícia! Qual pizza você está com vontade hoje? Nosso cardápio tem 8 sabores incríveis!",
+        "Vamos fazer seu pedido! Qual sabor te deixa com água na boca? 😋"
+      ]
+    },
+    {
+      "tag": "entrega",
+      "patterns": [
+        "quanto tempo para entregar",
+        "tempo de entrega",
+        "quando chega",
+        "demora quanto",
+        "prazo de entrega",
+        "em quanto tempo fica pronto",
+        "delivery",
+        "entrega em casa",
+        "quanto tempo demora",
+        "tempo pra chegar",
+        "entrga rapida",
+        "demora pra entregar",
+        "tempo estimado",
+        "quando vai chegar",
+        "prazo pra entrega",
+        "portuguesa",
+        "margherita",
+        "pepperoni",
+        "4 queijos",
+        "calabresa",
+        "frango catupiry",
+        "vegetariana",
+        "napolitana"
+      ],
+      "responses": [
+        "Nosso tempo de entrega é de 30 a 45 minutos! Pizza quentinha na sua casa! 🚗🍕",
+        "Entregamos em 30-45 minutos! Sua pizza sairá fresquinha do forno direto para você!",
+        "Tempo estimado: 30 a 45 minutos. Preparamos com carinho e entregamos rapidinho! ⏰",
+        "De 30 a 45 minutos sua pizza estará na sua porta! Entrega rápida e pizza quente garantida! 🔥"
+      ]
+    },
+    {
+      "tag": "agradecimento",
+      "patterns": [
+        "obrigado",
+        "obrigada",
+        "muito obrigado",
+        "valeu",
+        "brigado",
+        "thanks",
+        "agradeco",
+        "grato",
+        "grata",
+        "vlw",
+        "mto obrigado",
+        "obrigado pela atenção",
+        "obrigado pelo atendimento",
+        "agrdeco",
+        "obrigadoo"
+      ],
+      "responses": [
+        "De nada! Foi um prazer atendê-lo! 🍕😊",
+        "Imagina! Estamos sempre aqui para servir as melhores pizzas!",
+        "Muito obrigado pela preferência! Volte sempre à Pizzaria do Matheus!",
+        "Fico feliz em ajudar! Sua satisfação é nossa prioridade! 🙂"
+      ]
+    },
+    {
+      "tag": "reclamacao",
+      "patterns": [
+        "pizza chegou fria",
+        "demorou muito",
+        "atendimento ruim",
+        "pizza veio errada",
+        "estou insatisfeito",
+        "quero reclamar",
+        "problema com pedido",
+        "pizza ruim",
+        "não gostei",
+        "quero cancelar",
+        "pessimo atendimento",
+        "pizza queimada",
+        "entrega demorou",
+        "nao era isso que pedi",
+        "reclamaçao"
+      ],
+      "responses": [
+        "Peço desculpas pelo inconveniente! Vamos resolver isso imediatamente. Pode me contar o que aconteceu? 😔",
+        "Lamento muito pelo problema! Nossa equipe vai entrar em contato para resolver. Sua satisfação é importante!",
+        "Desculpe pela experiência ruim! Vamos corrigir isso agora mesmo. Como posso ajudar a resolver?",
+        "Sinto muito! Isso não representa nosso padrão. Vou encaminhar sua reclamação para resolvermos rapidamente! 🙏"
+      ]
+    },
+    {
+      "tag": "escolha_sabor",
+      "patterns": [
+        "calabresa",
+        "margherita",
+        "pepperoni",
+        "portuguesa",
+        "4 queijos",
+        "frango catupiry",
+        "vegetariana",
+        "napolitana"
+      ],
+      "responses": [
+        "Ótima escolha a pizza é deliciosa! 🍕"
+      ]
+    }
+  ]
+}
