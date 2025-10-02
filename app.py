@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from chatbot_pizzaria import ChatbotPizzaria
-import json
+import os
 
 app = Flask(__name__)
 chatbot = ChatbotPizzaria()
@@ -16,10 +16,8 @@ def chat():
     if not user_message:
         return jsonify({'error': 'Mensagem vazia'})
     
-    # Processar mensagem
     results = chatbot.process_message(user_message)
     
-    # Combinar todas as respostas
     combined_response = ""
     intents_detected = []
     avg_confidence = 0
@@ -40,4 +38,5 @@ def chat():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
