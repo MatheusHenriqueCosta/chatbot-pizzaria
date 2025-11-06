@@ -11,6 +11,7 @@ import nltk
 import pickle
 import re
 import unicodedata
+from nltk.stem.snowball import SnowballStemmer
 
 # Download necessário do NLTK (execute apenas uma vez)
 try:
@@ -22,14 +23,25 @@ except:
 class ChatbotPizzaria:
     def __init__(self):
         self.intents = self.load_intents()
-        # tentar carregar stopwords em português do NLTK; se falhar, sem stopwords
+        # tentar carregar stopwords em português do NLTK; se falhar, usar lista vazia
         try:
             from nltk.corpus import stopwords
-            pt_stopwords = stopwords.words('portuguese')
+            pt_stopwords = set(stopwords.words('portuguese'))
         except Exception:
-            pt_stopwords = None
+            pt_stopwords = set()
 
-        self.vectorizer = TfidfVectorizer(stop_words=pt_stopwords, lowercase=True)
+        # inicializar stemmer para português (Snowball)
+        try:
+            pt_stemmer = SnowballStemmer('portuguese')
+        except Exception:
+            pt_stemmer = None
+
+        # armazenar para uso nas funções
+        self.pt_stopwords = pt_stopwords
+        self.pt_stemmer = pt_stemmer
+
+        # usar um tokenizer próprio que faz normalização + remoção de stopwords + stem
+        self.vectorizer = TfidfVectorizer(tokenizer=self.tokenize, lowercase=False)
         self.train_model()
     
     def load_intents(self):
@@ -50,6 +62,16 @@ class ChatbotPizzaria:
         # remover pontuação
         text = re.sub(r'[^\w\s]', '', text)
         return text
+
+    def tokenize(self, text):
+        """Tokenizador que normaliza, remove stopwords em pt e aplica stem (se disponível)."""
+        text_proc = self.preprocess_text(text)
+        tokens = text_proc.split()
+        if getattr(self, 'pt_stopwords', None):
+            tokens = [t for t in tokens if t not in self.pt_stopwords]
+        if getattr(self, 'pt_stemmer', None):
+            tokens = [self.pt_stemmer.stem(t) for t in tokens]
+        return tokens
 
     def get_dish_from_text(self, text):
         """Tenta extrair o nome do prato a partir do texto checando a intent 'escolha_sabor'."""
