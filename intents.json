@@ -220,6 +220,25 @@
       ]
     },
     {
+      "tag": "ingredientes",
+      "patterns": [
+        "quais são os ingredientes",
+        "preciso dos ingredientes de",
+        "o que tem no prato",
+        "buscar ingredientes",
+        "ingredientes",
+        "quais os ingredientes do",
+        "o que leva",
+        "me diga os ingredientes de",
+        "receita do prato",
+        "como é feito"
+      ],
+      "responses": [
+        "Claro! Qual prato você quer? Posso listar os pratos disponíveis para escolha.",
+        "Posso te ajudar com os ingredientes — qual prato você escolhe?"
+      ]
+    },
+    {
       "tag": "escolha_sabor",
       "patterns": [
         "calabresa",

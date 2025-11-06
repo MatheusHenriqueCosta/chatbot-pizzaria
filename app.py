@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 from chatbot_pizzaria import ChatbotPizzaria
 import os
 
 app = Flask(__name__)
+# secret key para sessions; para produção defina FLASK_SECRET_KEY
+app.secret_key = os.environ.get('FLASK_SECRET_KEY') or os.urandom(24)
 chatbot = ChatbotPizzaria()
 
 @app.route('/')
@@ -15,6 +17,37 @@ def chat():
     
     if not user_message:
         return jsonify({'error': 'Mensagem vazia'})
+
+    # se o usuário estava no fluxo 'ingredientes' esperando o prato, tratar aqui
+    if session.get('expecting_dish'):
+        # tentar extrair prato da mensagem
+        dish = chatbot.get_dish_from_text(user_message)
+        if not dish:
+            # reenviar lista de pratos
+            dishes = []
+            for it in chatbot.intents.get('intents', []):
+                if it.get('tag') == 'escolha_sabor':
+                    dishes = list(it.get('patterns', []))
+                    break
+
+            return jsonify({
+                'response': "Desculpe, não identifiquei o prato. Escolha um dos seguintes: " + ", ".join(dishes),
+                'intents': 'ingredientes (0%)',
+                'confidence': 0.0,
+                'details': [{'sentence': user_message, 'intent': 'ingredientes', 'confidence': 0.0, 'response': 'awaiting dish', 'expecting_dish': True}]
+            })
+
+        # achou o prato -> consultar Deepseek
+        deepseek_resp = chatbot.query_deepseek(dish)
+        # limpar estado
+        session.pop('expecting_dish', None)
+
+        return jsonify({
+            'response': deepseek_resp,
+            'intents': 'ingredientes (100%)',
+            'confidence': 100.0,
+            'details': [{'sentence': user_message, 'intent': 'ingredientes', 'confidence': 100.0, 'response': deepseek_resp}]
+        })
     
     results = chatbot.process_message(user_message)
     
@@ -26,6 +59,9 @@ def chat():
         combined_response += result['response'] + " "
         intents_detected.append(f"{result['intent']} ({result['confidence']}%)")
         avg_confidence += result['confidence']
+        # se o chatbot está pedindo que o usuário escolha o prato, marcar sessão
+        if result.get('expecting_dish'):
+            session['expecting_dish'] = True
     
     if len(results) > 0:
         avg_confidence = avg_confidence / len(results)
